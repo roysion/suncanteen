@@ -1,0 +1,166 @@
+.page-container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 20rpx;
+}
+
+.order-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.order-no {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.order-status {
+  font-size: 24rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+.card-body {
+  border-top: 2rpx solid #f5f5f5;
+  padding-top: 20rpx;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.info-row:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.value {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.value.amount {
+  color: #409eff;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+
+.items-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.item-row:last-child {
+  border-bottom: none;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.item-spec {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.item-qty {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.item-amount {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #409eff;
+  margin-top: 5rpx;
+}
+
+.total-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 2rpx solid #f5f5f5;
+}
+
+.total-label {
+  font-size: 30rpx;
+  color: #666;
+}
+
+.total-amount {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #409eff;
+}
+
+.status-default {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.status-warning {
+  background: #fef08a;
+  color: #d97706;
+}
+
+.status-primary {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.status-success {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status-danger {
+  background: #fee2e2;
+  color: #dc2626;
+}

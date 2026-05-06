@@ -1,0 +1,27 @@
+<view class="page-container">
+  <view class="search-bar">
+    <input class="search-input" placeholder="搜索商品" bindinput="onSearchInput" />
+    <text class="search-icon">🔍</text>
+  </view>
+  <scroll-view scroll-y class="inventory-list">
+    <view wx:if="{{ inventory.length === 0 }}" class="empty">
+      <text class="empty-text">暂无库存数据</text>
+    </view>
+    <view wx:else>
+      <view wx:for="{{ inventory }}" wx:key="product_id" class="inventory-item">
+        <view class="item-info">
+          <text class="product-name">{{ item.product_name }}</text>
+          <text class="product-spec">规格：{{ item.spec }} | 单位：{{ item.unit }}</text>
+        </view>
+        <view class="item-right">
+          <view :class="['qty', { warning: item.quantity < 100 }]">
+            <text class="qty-value">{{ item.quantity }}</text>
+            <text class="qty-unit">{{ item.unit }}</text>
+          </view>
+          <text class="price">¥{{ item.cost_price.toFixed(2) }}/{{ item.unit }}</text>
+          <text wx:if="{{ item.quantity < 100 }}" class="warning-tag">库存不足</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,28 @@
+<view class="page-container">
+  <view class="tabs">
+    <view class="tab" :class="{ active: activeTab === 0 }" bindtap="setActiveTab" data-tab="0">全部</view>
+    <view class="tab" :class="{ active: activeTab === 1 }" bindtap="setActiveTab" data-tab="1">待处理</view>
+    <view class="tab" :class="{ active: activeTab === 2 }" bindtap="setActiveTab" data-tab="2">已完成</view>
+  </view>
+  <scroll-view scroll-y class="order-list">
+    <view wx:if="{{ filteredOrders.length === 0 }}" class="empty">
+      <text class="empty-text">暂无订单</text>
+    </view>
+    <view wx:else>
+      <view wx:for="{{ filteredOrders }}" wx:key="id" class="order-item" bindtap="goToDetail" data-id="{{ item.id }}">
+        <view class="order-header">
+          <text class="order-no">{{ item.order_no }}</text>
+          <text class="order-status" :class="getStatusClass(item.status)">{{ getStatusLabel(item.status) }}</text>
+        </view>
+        <view class="order-info">
+          <text class="supplier">{{ item.supplier_name }}</text>
+          <text class="time">{{ item.created_at }}</text>
+        </view>
+        <view class="order-footer">
+          <text class="total">订单总额：</text>
+          <text class="amount">¥{{ item.total_amount.toFixed(2) }}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

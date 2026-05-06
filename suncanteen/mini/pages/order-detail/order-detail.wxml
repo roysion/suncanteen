@@ -1,0 +1,43 @@
+<view class="page-container">
+  <view v-if="order" class="order-card">
+    <view class="card-header">
+      <text class="order-no">{{ order.order_no }}</text>
+      <text class="order-status" :class="getStatusClass(order.status)">{{ getStatusLabel(order.status) }}</text>
+    </view>
+    <view class="card-body">
+      <view class="info-row">
+        <text class="label">供应商</text>
+        <text class="value">{{ order.supplier_name }}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">订单金额</text>
+        <text class="value amount">¥{{ order.total_amount.toFixed(2) }}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">创建时间</text>
+        <text class="value">{{ order.created_at }}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">备注</text>
+        <text class="value">{{ order.remark || '-' }}</text>
+      </view>
+    </view>
+  </view>
+  <view v-if="items.length > 0" class="items-card">
+    <view class="card-title">商品明细</view>
+    <view wx:for="{{ items }}" wx:key="id" class="item-row">
+      <view class="item-info">
+        <text class="item-name">{{ item.product_name }}</text>
+        <text class="item-spec">规格：{{ item.spec }} | 单位：{{ item.unit }}</text>
+      </view>
+      <view class="item-right">
+        <text class="item-qty">{{ item.kindergarten_qty + item.primary_qty + item.junior_qty }} {{ item.unit }}</text>
+        <text class="item-amount">¥{{ item.amount.toFixed(2) }}</text>
+      </view>
+    </view>
+    <view class="total-row">
+      <text class="total-label">合计：</text>
+      <text class="total-amount">¥{{ totalAmount.toFixed(2) }}</text>
+    </view>
+  </view>
+</view>

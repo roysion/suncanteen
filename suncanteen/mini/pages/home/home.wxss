@@ -1,0 +1,166 @@
+.page-container {
+  padding: 20rpx;
+  padding-bottom: 140rpx;
+}
+
+.stats-section {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.stat-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  text-align: center;
+}
+
+.stat-icon {
+  font-size: 50rpx;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.stat-value {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #409eff;
+}
+
+.stat-value.warning {
+  color: #f56c6c;
+}
+
+.stat-label {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 5rpx;
+}
+
+.quick-action {
+  margin-bottom: 30rpx;
+}
+
+.btn-primary {
+  width: 100%;
+  height: 90rpx;
+  background: #409eff;
+  color: #fff;
+  border-radius: 15rpx;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+}
+
+.btn-icon {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+}
+
+.section-header {
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.empty {
+  text-align: center;
+  padding: 60rpx 0;
+}
+
+.empty-text {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 15rpx;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-no {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.order-supplier {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 5rpx;
+}
+
+.order-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.order-amount {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #409eff;
+}
+
+.order-status {
+  font-size: 22rpx;
+  padding: 5rpx 15rpx;
+  border-radius: 20rpx;
+  margin-top: 8rpx;
+}
+
+.status-default {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.status-warning {
+  background: #fef08a;
+  color: #d97706;
+}
+
+.status-primary {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.status-success {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status-danger {
+  background: #fee2e2;
+  color: #dc2626;
+}

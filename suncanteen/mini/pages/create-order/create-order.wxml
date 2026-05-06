@@ -1,0 +1,75 @@
+<view class="page-container">
+  <view class="form-item">
+    <text class="label">供应商</text>
+    <view class="picker-value" bindtap="showSupplierPicker">
+      <text>{{ supplierName || '请选择供应商' }}</text>
+      <text class="picker-arrow">›</text>
+    </view>
+  </view>
+  <view class="form-item">
+    <text class="label">备注</text>
+    <input class="input" placeholder="请输入备注" bindinput="onRemarkInput" />
+  </view>
+  <view class="form-section">
+    <view class="section-header">
+      <text class="section-title">商品列表</text>
+      <text class="add-btn" bindtap="showProductPicker">+ 添加商品</text>
+    </view>
+    <view wx:if="{{ selectedProducts.length === 0 }}" class="empty">
+      <text class="empty-text">请添加商品</text>
+    </view>
+    <view wx:else class="product-list">
+      <view wx:for="{{ selectedProducts }}" wx:key="id" class="product-item">
+        <view class="product-info">
+          <text class="product-name">{{ item.product_name }}</text>
+          <text class="product-spec">规格：{{ item.spec }} | 单价：¥{{ item.unit_price.toFixed(2) }}</text>
+        </view>
+        <view class="product-right">
+          <view class="stepper">
+            <text class="stepper-btn" bindtap="decreaseQty" data-index="{{ index }}">-</text>
+            <text class="stepper-value">{{ item.quantity }}</text>
+            <text class="stepper-btn" bindtap="increaseQty" data-index="{{ index }}">+</text>
+          </view>
+          <text class="remove-btn" bindtap="removeProduct" data-index="{{ index }}">删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="total-section">
+    <text class="total-label">订单总额：</text>
+    <text class="total-amount">¥{{ totalAmount.toFixed(2) }}</text>
+  </view>
+  <button class="btn-submit" bindtap="handleSubmit">提交订单</button>
+  <view v-if="showSupplierModal" class="modal-overlay" bindtap="hideSupplierPicker">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">选择供应商</text>
+        <text class="modal-close" bindtap="hideSupplierPicker">×</text>
+      </view>
+      <scroll-view scroll-y class="modal-body">
+        <view wx:for="{{ suppliers }}" wx:key="id" class="picker-item" bindtap="selectSupplier" data-id="{{ item.id }}" data-name="{{ item.name }}">
+          <text>{{ item.name }}</text>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view v-if="showProductModal" class="modal-overlay" bindtap="hideProductPicker">
+    <view class="modal-content-large" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">选择商品</text>
+        <text class="modal-close" bindtap="hideProductPicker">×</text>
+      </view>
+      <view class="modal-search">
+        <input class="search-input" placeholder="搜索商品" bindinput="onProductSearch" />
+      </view>
+      <scroll-view scroll-y class="modal-body">
+        <view wx:for="{{ filteredProducts }}" wx:key="id" class="picker-item" bindtap="selectProduct" data-id="{{ item.id }}" data-name="{{ item.name }}" data-spec="{{ item.spec }}" data-unit="{{ item.unit }}" data-price="{{ item.unit_price }}">
+          <view class="product-picker-info">
+            <text class="picker-name">{{ item.name }}</text>
+            <text class="picker-spec">规格：{{ item.spec }} | 单价：¥{{ item.unit_price.toFixed(2) }}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

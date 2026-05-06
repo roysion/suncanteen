@@ -1,0 +1,20 @@
+<view class="login-page">
+  <view class="logo-section">
+    <view class="logo">
+      <text class="logo-icon">🍽️</text>
+    </view>
+    <text class="title">阳光食堂</text>
+    <text class="subtitle">采购配送进销存一体化平台</text>
+  </view>
+  <view class="form-section">
+    <view class="form-item">
+      <text class="label">用户名</text>
+      <input class="input" placeholder="请输入用户名" bindinput="onUsernameInput" />
+    </view>
+    <view class="form-item">
+      <text class="label">密码</text>
+      <input class="input" type="password" placeholder="请输入密码" bindinput="onPasswordInput" />
+    </view>
+    <button class="btn-primary" bindtap="handleLogin">登录</button>
+  </view>
+</view>

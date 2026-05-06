@@ -1,0 +1,40 @@
+<view class="page-container">
+  <view class="stats-section">
+    <view class="stat-card" bindtap="goToOrders">
+      <text class="stat-icon">📋</text>
+      <text class="stat-value">{{ pendingOrders }}</text>
+      <text class="stat-label">待处理订单</text>
+    </view>
+    <view class="stat-card" bindtap="goToInventory">
+      <text class="stat-icon">📦</text>
+      <text class="stat-value warning">{{ lowStockCount }}</text>
+      <text class="stat-label">库存预警</text>
+    </view>
+  </view>
+  <view class="quick-action">
+    <button class="btn-primary" bindtap="goToCreateOrder">
+      <text class="btn-icon">+</text>
+      <text>创建订单</text>
+    </button>
+  </view>
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">最近订单</text>
+    </view>
+    <view wx:if="{{ recentOrders.length === 0 }}" class="empty">
+      <text class="empty-text">暂无订单</text>
+    </view>
+    <view wx:else class="order-list">
+      <view wx:for="{{ recentOrders }}" wx:key="id" class="order-item" bindtap="goToOrderDetail" data-id="{{ item.id }}">
+        <view class="order-info">
+          <text class="order-no">{{ item.order_no }}</text>
+          <text class="order-supplier">{{ item.supplier_name }}</text>
+        </view>
+        <view class="order-right">
+          <text class="order-amount">¥{{ item.total_amount.toFixed(2) }}</text>
+          <text class="order-status" :class="getStatusClass(item.status)">{{ getStatusLabel(item.status) }}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
