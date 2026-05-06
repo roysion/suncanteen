@@ -67,7 +67,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { returnOrder } from '../api'
+import { returnApi } from '../api'
 import { ElMessage } from 'element-plus'
 
 const router = useRouter()
@@ -101,7 +101,7 @@ const getStatusTagType = (status) => statusTagTypes[status] || 'info'
 
 const loadReturns = async () => {
   try {
-    const response = await returnOrder.list({
+    const response = await returnApi.list({
       page,
       size,
       keyword: searchKeyword.value,
@@ -142,10 +142,12 @@ const submitHandle = async () => {
     return
   }
   try {
-    const response = await returnOrder.handle(currentReturnId.value, {
-      status: handleResult.value,
-      remark: handleRemark.value
-    })
+    let response
+    if (handleResult.value === 'approved') {
+      response = await returnApi.approve(currentReturnId.value)
+    } else {
+      response = await returnApi.reject(currentReturnId.value, { reason: handleRemark.value })
+    }
     if (response.success) {
       ElMessage.success('处理成功')
       handleDialogVisible.value = false

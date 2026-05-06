@@ -37,7 +37,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { returnOrder, order } from '../api'
+import { returnApi, order } from '../api'
 import { ElMessage } from 'element-plus'
 
 const router = useRouter()
@@ -105,7 +105,7 @@ const handleSubmit = async () => {
     return
   }
   try {
-    const response = await returnOrder.create(form.value)
+    const response = await returnApi.create(form.value)
     if (response.success) {
       ElMessage.success('申请提交成功')
       router.push('/returns')

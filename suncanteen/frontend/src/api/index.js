@@ -127,7 +127,13 @@ export const organization = {
 export const report = {
   purchaseAnalysis: (params) => instance.get('/reports/purchase', { params }),
   inventoryAnalysis: () => instance.get('/reports/inventory'),
-  dashboard: () => instance.get('/reports/dashboard')
+  dashboard: () => instance.get('/reports/dashboard'),
+  purchase: (params) => instance.get('/reports/purchase/detail', { params }),
+  exportPurchase: (params) => instance.get('/reports/purchase/export', { params }),
+  inventory: (params) => instance.get('/reports/inventory/detail', { params }),
+  exportInventory: (params) => instance.get('/reports/inventory/export', { params }),
+  getSuppliers: () => instance.get('/reports/suppliers'),
+  getWarehouses: () => instance.get('/reports/warehouses')
 }
 
 export const system = {

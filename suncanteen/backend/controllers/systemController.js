@@ -30,7 +30,7 @@ const updateSettings = async (req, res) => {
 
 const getLogs = async (req, res) => {
   try {
-    const { page = 1, size = 20, user_id, start_date, end_date } = req.query;
+    const { page = 1, size = 20, user_id, start_date, end_date, keyword, type } = req.query;
     const offset = (page - 1) * size;
     
     let sql = 'SELECT * FROM operation_logs WHERE 1=1';
@@ -39,6 +39,16 @@ const getLogs = async (req, res) => {
     if (user_id) {
       sql += ' AND user_id = ?';
       params.push(user_id);
+    }
+
+    if (type) {
+      sql += ' AND operation_type = ?';
+      params.push(type);
+    }
+
+    if (keyword) {
+      sql += ' AND (operation_module LIKE ? OR operation_detail LIKE ?)';
+      params.push(`%${keyword}%`, `%${keyword}%`);
     }
 
     if (start_date) {
